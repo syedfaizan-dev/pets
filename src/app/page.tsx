@@ -1,9 +1,14 @@
-import Image from "next/image";
+import React from 'react';
 
-export default function Home() {
+const HomePage = () => {
   return (
     <div>
-      Syed Faaiz
+      <main className="container mx-auto p-4 text-center">
+        <h1 className="text-4xl font-bold">Welcome to Pets</h1>
+        <p className="text-lg mt-4">NFTs Marketplace</p>
+      </main>
     </div>
   );
-}
+};
+
+export default HomePage;
