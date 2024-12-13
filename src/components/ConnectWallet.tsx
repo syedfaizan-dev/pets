@@ -1,16 +1,18 @@
 "use client"
 import React, { useState } from 'react';
-import { Account } from './Account';
 import { useAccount } from 'wagmi';
-import { WalletOptions } from './WalletOptions';
+import { modal } from '@/context';
+import Link from 'next/link';
 
 const ConnectWallet = () => {
-  const { isConnected } = useAccount()
-  if (isConnected) return <Account />
+  const { isConnected, address } = useAccount()
+  if (isConnected) return (
+    <Link href='account'>{address?.substring(0,6)}...</Link>
+  )
   return (
-    <div className='bg-blue-100 rounded-lg p-6 flex flex-row flex-wrap gap-4'>
-      <WalletOptions />
-    </div>
+    <button onClick={() => modal.open()}>
+      Connect Wallet
+    </button>
   )
 };
 

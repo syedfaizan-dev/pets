@@ -1,10 +1,11 @@
-import ConnectWallet from '@/components/ConnectWallet';
+'use client'
+import { Account } from '@/components/Account';
 import React from 'react';
 
 const ConnectWalletPage = () => {
   return (
     <div className="flex items-center justify-center p-8">
-      <ConnectWallet />
+      <Account/>
     </div>
   );
 };
