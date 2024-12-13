@@ -1,11 +1,14 @@
 'use client'
 import { Account } from '@/components/Account';
+import TokenRead from '@/components/TokenRead';
 import React from 'react';
 
 const ConnectWalletPage = () => {
+
   return (
-    <div className="flex items-center justify-center p-8">
+    <div className="grid grid-cols-1 gap-8 p-8">
       <Account/>
+      <TokenRead/>
     </div>
   );
 };

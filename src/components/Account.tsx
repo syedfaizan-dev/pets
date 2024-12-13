@@ -1,4 +1,5 @@
 import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi'
+import Card from './Card';
 
 export function Account() {
   const { address, isConnected, connector, chain, status } = useAccount();
@@ -8,12 +9,16 @@ export function Account() {
 
   if (!isConnected) {
     return (
-      <div className="p-4 text-center text-gray-600">You are not connected</div>
+      <Card>
+        <div className="text-center text-gray-600">
+          You are not connected
+        </div>
+      </Card>
     );
   }
 
   return (
-    <div className="w-auto p-6 bg-white border rounded-lg shadow-md space-y-4">
+    <Card>
       <div className="flex items-center space-x-4">
         {ensAvatar && (
           <img
@@ -33,7 +38,7 @@ export function Account() {
             <b>Connector: </b>{connector?.name}
           </p>
           <p className="text-gray-500 break-words">
-            <b>{chain?.testnet ? "Testnet:" : "Mainnet:"} </b>{chain?.name} 
+            <b>{chain?.testnet ? "Testnet:" : "Mainnet:"} </b>{chain?.name}
           </p>
           <p className="text-gray-500 break-words">
             <b>Status: </b>{status}
@@ -47,6 +52,6 @@ export function Account() {
       >
         Disconnect
       </button>
-    </div>
+    </Card>
   );
 }
