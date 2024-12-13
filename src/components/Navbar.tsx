@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between">
         <Link href="/" className='text-xl font-bold'>Pets</Link>
         <div className="flex gap-5">
-          <Link href="/mint">Mint</Link>
+          <Link href="/token">Token</Link>
           <ConnectWallet />
         </div>
       </div>

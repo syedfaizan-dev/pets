@@ -2,7 +2,7 @@
 
 import { cookieStorage, createStorage, http } from '@wagmi/core'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
-import { mainnet, sepolia, solana, optimism, polygonZkEvm, arbitrum, base, avalanche } from '@reown/appkit/networks'
+import { sepolia , mainnet, solana, optimism, polygonZkEvm, arbitrum, base, avalanche } from '@reown/appkit/networks'
 
 // Get projectId from https://cloud.reown.com
 export const projectId = 'fcdad581759242d26b545a46c5856ba3'
@@ -24,7 +24,7 @@ const transports = {
 }
 
 // Configure networks
-export const networks = [mainnet, sepolia]
+export const networks = [mainnet, sepolia, solana, optimism, polygonZkEvm, arbitrum, base, avalanche]
 
 // Set up the Wagmi Adapter
 export const wagmiAdapter = new WagmiAdapter({

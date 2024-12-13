@@ -3,16 +3,17 @@ import React, { useState } from 'react';
 import { useAccount } from 'wagmi';
 import { modal } from '@/context';
 import Link from 'next/link';
+import Button from './Button';
 
 const ConnectWallet = () => {
   const { isConnected, address } = useAccount()
   if (isConnected) return (
-    <Link href='account'>{address?.substring(0,6)}...</Link>
+    <Link href='account' className='cursor-pointer bg-gray-300 px-2 rounded-lg' >{address?.substring(0, 6)}...</Link>
   )
   return (
-    <button onClick={() => modal.open()}>
+    <div className='cursor-pointer bg-gray-300 px-2 rounded-lg' onClick={() => modal.open()}>
       Connect Wallet
-    </button>
+    </div>
   )
 };
 

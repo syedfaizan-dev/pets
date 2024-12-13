@@ -1,5 +1,6 @@
 import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi'
 import Card from './Card';
+import Button from './Button';
 
 export function Account() {
   const { address, isConnected, connector, chain, status } = useAccount();
@@ -46,12 +47,12 @@ export function Account() {
         </div>
       </div>
 
-      <button
+      <Button
         onClick={() => disconnect()}
-        className="w-full px-4 py-2 text-white bg-red-500 hover:bg-red-600 rounded-md"
+        variant='danger'
       >
         Disconnect
-      </button>
+      </Button>
     </Card>
   );
 }

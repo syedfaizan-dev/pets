@@ -1,5 +1,5 @@
 import { type BaseError, useAccount, useReadContracts } from 'wagmi';
-import { FaCheckCircle, FaExclamationCircle, FaSpinner } from 'react-icons/fa';
+import { FaExclamationCircle, FaSpinner } from 'react-icons/fa';
 import Card from './Card';
 import { tokenConfig } from '@/config/tokenConfig';
 
@@ -22,7 +22,7 @@ export default function TokenRead() {
             }
         ]
     });
-    const [balance, totalSupply] = data || [] 
+    const [balance, totalSupply] = data || []
     let content;
     if (!address) {
         content = (
