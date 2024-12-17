@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import ConnectWallet from './ConnectWallet';
+import ConnectWallet from '../ConnectWallet';
 
 const Navbar = () => {
   return (
@@ -9,6 +9,7 @@ const Navbar = () => {
         <Link href="/" className='text-xl font-bold'>Pets</Link>
         <div className="flex gap-5">
           <Link href="/token">Token</Link>
+          <Link href="/nft">NFT</Link>
           <ConnectWallet />
         </div>
       </div>

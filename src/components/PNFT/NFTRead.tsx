@@ -1,9 +1,9 @@
 import { type BaseError, useAccount, useReadContracts } from 'wagmi';
 import { FaExclamationCircle, FaSpinner } from 'react-icons/fa';
-import Card from './Card';
-import { tokenConfig } from '@/config/tokenConfig';
+import { nftConfig } from '@/config/nftConfig';
+import Card from '../common/Card';
 
-export default function TokenRead() {
+export default function NFTRead() {
     const { address } = useAccount();
     const {
         data,
@@ -12,12 +12,12 @@ export default function TokenRead() {
     } = useReadContracts({
         contracts: [
             {
-                ...tokenConfig,
+                ...nftConfig,
                 functionName: 'balanceOf',
                 args: [address!]
             },
             {
-                ...tokenConfig,
+                ...nftConfig,
                 functionName: 'totalSupply'
             }
         ]
@@ -56,7 +56,7 @@ export default function TokenRead() {
 
     return (
         <Card>
-            <h1 className='font-bold text-3xl'>Pet Token</h1>
+            <h1 className='font-semibold text-2xl mb-4'>Your NFTs</h1>
             {content}
         </Card>
     )

@@ -1,6 +1,6 @@
 import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi'
-import Card from './Card';
-import Button from './Button';
+import Card from './common/Card';
+import Button from './common/Button';
 
 export function Account() {
   const { address, isConnected, connector, chain, status } = useAccount();
@@ -20,7 +20,7 @@ export function Account() {
 
   return (
     <Card>
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-4 mb-4">
         {ensAvatar && (
           <img
             className="w-16 h-16 rounded-full"
