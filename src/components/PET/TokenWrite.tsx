@@ -6,8 +6,9 @@ import {
     useWaitForTransactionReceipt,
     useWriteContract
 } from 'wagmi'
-import Card from './Card'
-import Button from './Button'
+import Card from '../common/Card'
+import Button from '../common/Button'
+import { parseEther } from 'viem'
 
 export default function TokenWrite() {
     const {
@@ -23,6 +24,7 @@ export default function TokenWrite() {
             ...tokenConfig,
             functionName: 'buyToken',
             args: [],
+            value: parseEther("0.000000000000000001")
         })
     }
 
@@ -31,6 +33,7 @@ export default function TokenWrite() {
 
     return (
         <Card>
+            <h2 className="text-2xl font-semibold mb-4">Buy PET Token</h2>
             <Button
                 disabled={isPending || !address}
                 onClick={submit}
