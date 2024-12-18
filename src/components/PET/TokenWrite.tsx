@@ -7,8 +7,9 @@ import {
 } from 'wagmi'
 import Card from '../common/Card'
 import Button from '../common/Button'
-import { parseEther } from 'viem'
+import { BaseError, parseEther } from 'viem'
 import TransactionConfirmation from '../common/TransactionConfirmation'
+import Error from '../common/Error'
 
 export default function TokenWrite() {
     const {
@@ -18,7 +19,6 @@ export default function TokenWrite() {
         writeContract
     } = useWriteContract()
     const { address } = useAccount();
-
     async function submit() {
         writeContract({
             ...tokenConfig,
@@ -38,6 +38,8 @@ export default function TokenWrite() {
             >
                 Buy Token
             </Button>
+            <Error error={(error as BaseError)?.shortMessage || error?.message}/>
+            
             <TransactionConfirmation hash={hash}/>
         </Card>
     )

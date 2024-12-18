@@ -6,6 +6,7 @@ import Card from "../common/Card";
 import Input from "../common/Input";
 import Button from "../common/Button";
 import TransactionConfirmation from "../common/TransactionConfirmation";
+import Error from "../common/Error";
 
 const ApproveToken = () => {
     const { address } = useAccount();
@@ -54,9 +55,7 @@ const ApproveToken = () => {
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 min="0"
-                error={(error as BaseError)?.shortMessage || error?.message}
             />
-
             <Button
                 disabled={isPending || !address || !spender || !amount}
                 onClick={submit}
@@ -64,6 +63,7 @@ const ApproveToken = () => {
             >
                 Approve
             </Button>
+            <Error error={(error as BaseError)?.shortMessage || error?.message}/>
             <TransactionConfirmation hash={hash}/>
         </Card>
     );

@@ -1,15 +1,15 @@
 import { useWaitForTransactionReceipt } from "wagmi";
-import { FiLoader, FiCheckCircle, FiAlertCircle, FiXCircle, FiCopy } from "react-icons/fi";
+import { FiLoader, FiCheckCircle, FiXCircle, FiCopy } from "react-icons/fi";
 import { useState } from "react";
 
 export default function TransactionConfirmation({ hash }: { hash: `0x${string}` | undefined }) {
-    const { 
-        isLoading: isConfirming, 
-        isSuccess: isConfirmed, 
-        isError, 
-        failureReason, 
-        error, 
-        status 
+    const {
+        isLoading: isConfirming,
+        isSuccess: isConfirmed,
+        isError,
+        failureReason,
+        error,
+        status
     } = useWaitForTransactionReceipt({ hash });
 
     const [copied, setCopied] = useState<boolean>(false);
@@ -24,19 +24,21 @@ export default function TransactionConfirmation({ hash }: { hash: `0x${string}` 
 
     return (
         hash && (
-            <div className="mt-5 p-4 border rounded-lg max-w-full overflow-hidden">
+            <div className="mt-5 p-4 border rounded-lg max-w-full overflow-hidden relative">
                 <div className="flex items-center justify-between mb-3">
                     <div className="font-semibold text-lg text-gray-700 flex items-center">
                         Transaction Status
                     </div>
-                    <button 
-                        onClick={copyToClipboard} 
-                        className="text-gray-600 hover:text-blue-500 flex items-center"
-                        title="Copy to clipboard"
-                    >
-                        <FiCopy className="mr-1" />
-                        {copied ? "Copied!" : "Copy Hash"}
-                    </button>
+                    <div className="flex flex-row space-x-4">
+                        <button
+                            onClick={copyToClipboard}
+                            className="text-gray-600 hover:text-blue-500 flex items-center"
+                            title="Copy to clipboard"
+                        >
+                            <FiCopy className="mr-1" />
+                            {copied ? "Copied!" : "Copy Hash"}
+                        </button>
+                    </div>
                 </div>
 
                 <div className="p-3 bg-gray-50 border rounded break-words text-sm text-gray-800">
@@ -63,8 +65,8 @@ export default function TransactionConfirmation({ hash }: { hash: `0x${string}` 
                         <div>
                             <div className="text-red-600 font-semibold">Transaction Failed</div>
                             <div className="text-gray-700">
-                                {failureReason 
-                                    ? `Reason: ${failureReason}` 
+                                {failureReason
+                                    ? `Reason: ${failureReason}`
                                     : error?.message || "An unknown error occurred."}
                             </div>
                         </div>

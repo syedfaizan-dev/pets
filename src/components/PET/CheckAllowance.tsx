@@ -5,6 +5,7 @@ import { useReadContract } from "wagmi";
 import { useEffect, useState } from "react";
 import { BaseError } from "viem";
 import { tokenConfig } from "@/config/tokenConfig";
+import Error from "../common/Error";
 
 const CheckAllowance = () => {
     const [owner, setOwner] = useState('');
@@ -48,7 +49,6 @@ const CheckAllowance = () => {
                 placeholder="Spender Address"
                 onChange={(e) => setSpender(e.target.value)}
                 value={spender}
-                error={(error as BaseError)?.shortMessage || error?.message}
             />
             <Button
                 disabled={isLoading || !spender || !owner}
@@ -57,6 +57,8 @@ const CheckAllowance = () => {
             >
                 Check Allowance
             </Button>
+            <Error error={(error as BaseError)?.shortMessage || error?.message}/>
+
             {allowance && <div className="mt-4">
                 <div className="mt-3 p-2 bg-gray-100 border rounded text-gray-800">
                     <strong>Allowance: </strong> {allowance}

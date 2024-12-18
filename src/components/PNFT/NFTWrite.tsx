@@ -10,6 +10,7 @@ import Button from '../common/Button'
 import Input from '../common/Input'
 import { parseEther } from 'viem'
 import TransactionConfirmation from '../common/TransactionConfirmation'
+import Error from '../common/Error'
 
 export default function NFTWrite() {
     const {
@@ -45,7 +46,6 @@ export default function NFTWrite() {
                     value={amount}
                     onChange={(e) => setAmount(Number(e.target.value))}
                     placeholder="Enter amount"
-                    error={(error as BaseError)?.shortMessage || error?.message}
                 />
 
                 <Button
@@ -55,7 +55,7 @@ export default function NFTWrite() {
                 >
                     Mint NFT
                 </Button>
-
+                <Error error={(error as BaseError)?.shortMessage || error?.message}/>
                 <TransactionConfirmation hash={hash}/>
             </div>
         </Card>

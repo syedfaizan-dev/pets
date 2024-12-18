@@ -4,6 +4,7 @@ import Card from "../common/Card";
 import Input from "../common/Input";
 import { nftConfig } from "@/config/nftConfig";
 import { useState, useEffect } from "react";
+import Error from "../common/Error";
 
 export default function GetTokenURI() {
   const [tokenID, setTokenID] = useState<number | ''>('');
@@ -41,7 +42,6 @@ export default function GetTokenURI() {
         placeholder="Enter Token ID"
         type="number"
         value={tokenID}
-        error={(error as unknown as BaseError)?.shortMessage || error?.message}
       />
       <Button
         disabled={isLoading || !tokenID}
@@ -50,7 +50,7 @@ export default function GetTokenURI() {
       >
         Get URI
       </Button>
-
+      <Error error={(error as unknown as BaseError)?.shortMessage || error?.message}/>
       {uri && (
         <div className="mt-3 p-2 bg-gray-100 border rounded text-gray-800 break-words max-w-full overflow-auto">
           <strong>Token URI: </strong>
