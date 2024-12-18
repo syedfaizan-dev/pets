@@ -2,9 +2,6 @@ import * as React from 'react'
 import {
     type BaseError,
     useAccount,
-    useTransaction,
-    useTransactionReceipt,
-    useWaitForTransactionReceipt,
     useWriteContract
 } from 'wagmi'
 import { nftConfig } from '@/config/nftConfig'
@@ -12,6 +9,7 @@ import Card from '../common/Card'
 import Button from '../common/Button'
 import Input from '../common/Input'
 import { parseEther } from 'viem'
+import TransactionConfirmation from '../common/TransactionConfirmation'
 
 export default function NFTWrite() {
     const {
@@ -38,8 +36,6 @@ export default function NFTWrite() {
         })
     }
 
-    const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash })
-
     return (
         <Card>
             <div className="space-y-4">
@@ -60,17 +56,7 @@ export default function NFTWrite() {
                     Mint NFT
                 </Button>
 
-                {hash && (
-                    <div className="mt-3 p-2 bg-gray-100 border rounded text-gray-800 break-words max-w-full overflow-auto">
-                        <strong>Transaction Hash: </strong> {hash}
-                        {isConfirming && (
-                            <div className="text-gray-600">Waiting for confirmation...</div>
-                        )}
-                        {isConfirmed && (
-                            <div className="text-green-600">Transaction confirmed.</div>
-                        )}
-                    </div>
-                )}
+                <TransactionConfirmation hash={hash}/>
             </div>
         </Card>
     )
